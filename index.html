@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./prism/prism.css">
+    <title>DaiSX</title>
+</head>
+<script src="./prism/prism.js"></script>
+<style id="styleTag" lang="css"></style>
+<body>
+ <div id="wrap"></div>
+</body>
+<script>
+    let html = `
+    <div id="my">
+        <div class='item my-baseInfo'>
+            <div class="left">
+                <div class="top">
+                    <h1>xxx</h1>
+                    <span>书山有路勤为径, 学海无崖苦做舟!</span>
+                </div>
+                <div class="bottom">
+                    <span>xxxxxxxx</span>
+                    <span>xxx</span>
+                    <span>xxx</span>
+                </div>
+            </div>
+            <div class="right">
+                <div class="img"></div>
+            </div>
+        </div>
+        <div class="item my-intention">
+            <div class="title">
+                <h3>求职意向</h3>
+            </div>
+            <div class="content">
+                <div>
+                    <span>意向岗位</span>
+                    <span>全职</span>
+                    <span>意向城市</span>
+                    <span>薪资面议</span>
+                </div>
+            </div>
+        </div>
+        <div class="item my-eduction">
+            <div class="title">
+                <h3>xxxxx</h3>
+            </div>
+            <div class="content">
+                <div>
+                    <span>xxx-xxx-xxxx</span> <span>xxxxxx</span> <span>xxxxxx</span>
+                </div>
+                <div>
+                    <span>xxx-xxx-xxxx</span> <span>xxxxxx</span> <span>xxxxxx</span>
+                </div>
+            </div>
+        </div>
+        <div class="item my-experience">
+            <div class="title">
+                <h3>工作经验</h3>
+            </div>
+            <div class="content">
+                <div>
+                    阿斯顿发送发送到发送到发阿迪舒服阿斯顿发短发发送到发爱上发多少
+                </div>
+            </div>
+        </div>
+        <div class="item my-honor">
+            <div class="title">
+                <h3>荣誉奖项</h3>
+            </div>
+            <div class="content">
+                <div>
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                </div>
+            </div>
+        </div>
+        <div class="item my-selfEvaluate">
+            <div class="title">
+                <h3>自我评价</h3>
+            </div>
+            <div class="content">
+                <div>
+                    阿斯顿发送发送到发送到发阿迪舒服阿斯顿发短发发送到发爱上发多少
+                    阿斯顿发送发送到发送到发阿迪舒服阿斯顿发短发发送到发爱上发多少
+                    阿斯顿发送发送到发送到发阿迪舒服阿斯顿发短发发送到发爱上发多少
+                </div>
+            </div>
+        </div>
+    </div>
+    <pre id="styleWrap"></pre>`;
+    let style = `
+    #styleWrap {
+        width: 30%;
+        // border: 1px solid black;
+        background-color: #DBE9FB;
+        min-heigth: 100px;
+    }
+    * {
+        transition: all 1s;
+    }
+    ul, li, h3, h2, h1 {
+        padding: 0;
+        margin: 0;
+    }
+    h2, h3 {
+        color: #2B70B7;
+    }
+    #wrap {
+        display: flex;
+        justify-content: space-between;
+    }
+    #my {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px 20px;
+        width: 60%;
+    }
+    #my .item {
+        min-height: 100px;
+        border: none;
+    }
+    #my .item:not(:first-child) {
+        border-top: 3px solid #2B70B7;
+    }
+    .my-baseInfo {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+    }
+    .my-baseInfo .left {
+        width: 75%;
+    }
+    .my-baseInfo .left .top {
+        min-height: 100px;
+        background: #2B70B7;
+        color: #fff;
+        padding: 0 40px;
+    }
+    .my-baseInfo .left .bottom {
+        padding: 10px 20px;
+    }
+    .my-baseInfo .left .bottom span {
+        border-right: 1px solid saddlebrown;
+        min-width: 60px;
+        padding-right: 10px;
+    }
+    .my-baseInfo .right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+    }
+    .my-baseInfo .right .img {
+        width: 200px;
+        height: 250px;
+        background: url('./aobama.jpg') center 1px no-repeat;
+    }
+    .title {
+        padding-left: 20px;
+        margin-bottom: 5px;
+        line-height: 32px;
+        background: rgba(179, 212, 252, .5);
+    }
+    .content {
+        padding-left: 10px;
+    }
+    .content div {
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 10px;
+    }
+    .content span {
+        padding: 0 20px 0 0;
+    }`;
+    let n = 0;
+    let j = 0;
+    let timer = null;
+    let wrap = document.getElementById('wrap');
+    let pageContent = document.getElementById('pageContent');
+    setTimer(10, function() {
+        if (timer) {
+            clearInterval(timer);
+        }
+        return (function() {
+            timer = setInterval(function() {
+                styleWrap.innerHTML = Prism.highlight('' + style.substring(0, j), Prism.languages.css);
+                styleTag.innerHTML =`${style.substring(0, j)}`;
+                if (+j >= +style.length) {
+                    my.style.width = '100%';
+                    styleWrap.style.display = 'none';
+                    clearInterval(timer);
+                }
+                j += 1;
+            }, 17);
+        })();
+    });
+    function setTimer(interval, fn) {
+        if (timer) {
+            clearInterval(timer);
+        }
+        if (pageContent && pageContent.innerHTML) {
+            fn();
+            return;
+        }
+        timer = setInterval(_ => {
+            wrap.innerHTML =`${html.substring(0, n)}`;
+            if (+n >= +html.length) {
+                clearInterval(timer);
+                fn && fn();
+            }
+            n += 1;
+        }, interval);
+    };
+</script>
+</html>
